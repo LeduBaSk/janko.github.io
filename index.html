@@ -1,1132 +1,1379 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mocko - Kanalizačný Servis | Profesionálne čistenie a opravy kanalizácií</title>
-  <meta name="description" content="Profesionálne čistenie, opravy a údržba kanalizačných systémov. Havarijná služba dostupná 24/7. Volajte +421 910 667 772">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #FF7A00;
-      --primary-dark: #E06D00;
-      --secondary: #343A40;
-      --light: #F8F9FA;
-      --dark: #212529;
-      --gray: #6C757D;
-      --slovak-blue: #034EA2;
-      --slovak-red: #EE1620;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'PT Sans', 'Roboto', sans-serif;
-    }
-    
-    body {
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-      font-size: 18px;
-    }
-    
-    h1, h2, h3, h4 {
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    
-    p {
-      margin-bottom: 1.5rem;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Header */
-    header {
-      background-color: white;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-    
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-    }
-    
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .logo i {
-      color: var(--slovak-blue);
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-    
-    .nav-links a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      font-size: 18px;
-      position: relative;
-    }
-    
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-    
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s;
-    }
-    
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: var(--dark);
-    }
-    
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/resize-01.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: white;
-      margin-top: 60px;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 25px;
-      animation: fadeInUp 1s ease;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    }
-    
-    .hero p {
-      font-size: 1.4rem;
-      margin-bottom: 40px;
-      animation: fadeInUp 1s ease 0.2s forwards;
-      opacity: 0;
-      font-weight: 300;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
-    
-    .btn {
-      display: inline-block;
-      background-color: var(--primary);
-      color: white;
-      padding: 15px 35px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      border: 2px solid var(--primary);
-      animation: fadeInUp 1s ease 0.4s forwards;
-      opacity: 0;
-      font-size: 18px;
-      margin: 0 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    
-    .btn:hover {
-      background-color: transparent;
-      color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-    
-    .btn-outline {
-      background-color: transparent;
-      border: 2px solid white;
-    }
-    
-    .btn-outline:hover {
-      background-color: white;
-      color: var(--dark);
-    }
-    
-    /* Services */
-    .section {
-      padding: 100px 0;
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    
-    .section-title h2 {
-      font-size: 2.8rem;
-      color: var(--secondary);
-      position: relative;
-      display: inline-block;
-    }
-    
-    .section-title h2::after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 4px;
-      background-color: var(--primary);
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-    }
-    
-    .service-card {
-      background-color: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
-    
-    .service-img {
-      height: 250px;
-      overflow: hidden;
-    }
-    
-    .service-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .service-card:hover .service-img img {
-      transform: scale(1.1);
-    }
-    
-    .service-content {
-      padding: 25px;
-    }
-    
-    .service-content h3 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      color: var(--secondary);
-      font-weight: 700;
-    }
-    
-    .service-content p {
-      font-size: 18px;
-      color: var(--gray);
-      font-weight: 400;
-      line-height: 1.6;
-    }
-    
-    /* Gallery */
-    .gallery {
-      background-color: #f5f5f5;
-    }
-    
-    .gallery-container {
-      position: relative;
-    }
-    
-    .swiper {
-      width: 100%;
-      height: 500px;
-      margin: 50px 0;
-      border-radius: 15px;
-      overflow: hidden;
-    }
-    
-    .swiper-slide {
-      position: relative;
-    }
-    
-    .swiper-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .image-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 20px;
-      font-size: 1.2rem;
-    }
-    
-    .swiper-pagination-bullet {
-      width: 12px;
-      height: 12px;
-      background: white;
-      opacity: 0.7;
-    }
-    
-    .swiper-pagination-bullet-active {
-      background-color: var(--primary) !important;
-      opacity: 1;
-    }
-    
-    .swiper-button-next, .swiper-button-prev {
-      color: var(--primary) !important;
-      background: rgba(255,255,255,0.8);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      transition: all 0.3s;
-    }
-    
-    .swiper-button-next:hover, .swiper-button-prev:hover {
-      background: white;
-    }
-    
-    .swiper-button-next::after, .swiper-button-prev::after {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    
-    /* Image Grid */
-    .image-grid {
-      margin-top: 70px;
-    }
-    
-    .image-grid h3 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 1.8rem;
-      color: var(--secondary);
-    }
-    
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 25px;
-    }
-    
-    .grid-item {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s;
-      height: 300px;
-    }
-    
-    .grid-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
-    
-    .grid-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    
-    .grid-item:hover img {
-      transform: scale(1.1);
-    }
-    
-    /* About */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    
-    .about-img {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      height: 500px;
-    }
-    
-    .about-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    
-    .about-content h2 {
-      font-size: 2.5rem;
-      margin-bottom: 25px;
-      color: var(--secondary);
-    }
-    
-    .about-content p {
-      margin-bottom: 25px;
-      color: var(--gray);
-      font-size: 18px;
-      line-height: 1.7;
-    }
-    
-    .about-image-showcase {
-      display: flex;
-      gap: 20px;
-      margin: 30px 0;
-    }
-    
-    .about-image-showcase img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    }
-    
-    .about-image-showcase img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
-    
-    /* Contact */
-    .contact {
-      background-color: var(--secondary);
-      color: white;
-    }
-    
-    .contact .section-title h2 {
-      color: white;
-    }
-    
-    .contact .section-title h2::after {
-      background-color: white;
-    }
-    
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 60px;
-    }
-    
-    .contact-info h3 {
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-      color: white;
-    }
-    
-    .contact-info p {
-      margin-bottom: 20px;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .contact-info i {
-      color: var(--primary);
-      font-size: 24px;
-      min-width: 30px;
-      text-align: center;
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 18px;
-      margin-bottom: 25px;
-      border: none;
-      border-radius: 8px;
-      background-color: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 18px;
-      transition: all 0.3s;
-    }
-    
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      background-color: rgba(255,255,255,0.2);
-    }
-    
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: rgba(255,255,255,0.7);
-      font-weight: 300;
-    }
-    
-    .contact-form button {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 18px 35px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-      font-size: 18px;
-      width: 100%;
-    }
-    
-    .contact-form button:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    
-    /* Footer */
-    footer {
-      background-color: var(--dark);
-      color: white;
-      padding: 50px 0 30px;
-    }
-    
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    
-    .footer-column h3 {
-      font-size: 1.5rem;
-      margin-bottom: 25px;
-      color: var(--primary);
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 15px;
-    }
-    
-    .footer-links a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-      font-size: 18px;
-      font-weight: 300;
-    }
-    
-    .footer-links a:hover {
-      color: var(--primary);
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 20px;
-      margin-top: 25px;
-    }
-    
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 45px;
-      height: 45px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      border-radius: 50%;
-      font-size: 20px;
-      transition: all 0.3s;
-    }
-    
-    .social-links a:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 16px;
-      font-weight: 300;
-      opacity: 0.8;
-    }
-    
-    /* Emergency Banner */
-    .emergency-banner {
-      background: linear-gradient(to right, var(--slovak-red), var(--primary));
-      color: white;
-      padding: 15px 0;
-      text-align: center;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 999;
-      box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
-    }
-    
-    .emergency-banner p {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 600;
-    }
-    
-    .emergency-banner a {
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-block;
-    }
-    
-    .emergency-banner a:hover {
-      text-decoration: underline;
-      transform: scale(1.05);
-    }
-    
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Mocko - Kanalizačný Servis | Profesionálne čistenie a opravy kanalizácií
+    </title>
+    <meta
+      name="description"
+      content="Profesionálne čistenie, opravy a údržba kanalizačných systémov. Havarijná služba dostupná 24/7. Volajte +421 910 667 772"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ff7a00;
+        --primary-dark: #e06d00;
+        --secondary: #343a40;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --gray: #6c757d;
+        --slovak-blue: #034ea2;
+        --slovak-red: #ee1620;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "PT Sans", "Roboto", sans-serif;
       }
-    }
-    
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    
-    .lightbox.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    
-    .lightbox-content {
-      position: relative;
-      max-width: 90%;
-      max-height: 90%;
-    }
-    
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 90vh;
-      object-fit: contain;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-    }
-    
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      background: rgba(0,0,0,0.5);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-    }
-    
-    .lightbox-close:hover {
-      background: var(--primary);
-    }
-    
-    /* Mobile Styles */
-    @media (max-width: 992px) {
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+        font-size: 18px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
         background-color: white;
-        flex-direction: column;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
+        padding: 15px 0;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo i {
+        color: var(--slovak-blue);
+      }
+
+      .nav-links {
+        display: flex;
         gap: 30px;
-        transition: left 0.3s;
       }
-      
-      .nav-links.active {
+
+      .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        font-size: 18px;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        bottom: -5px;
         left: 0;
+        transition: width 0.3s;
       }
-      
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
       .mobile-menu-btn {
-        display: block;
+        display: none;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--dark);
       }
-      
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("images/resize-01.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        margin-top: 60px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
       .hero h1 {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+        animation: fadeInUp 1s ease;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       }
-      
-      .about {
-        grid-template-columns: 1fr;
-      }
-      
-      .about-img {
-        order: -1;
-        height: 400px;
-      }
-      
-      .swiper {
-        height: 400px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      
+
       .hero p {
+        font-size: 1.4rem;
+        margin-bottom: 40px;
+        animation: fadeInUp 1s ease 0.2s forwards;
+        opacity: 0;
+        font-weight: 300;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid var(--primary);
+        animation: fadeInUp 1s ease 0.4s forwards;
+        opacity: 0;
+        font-size: 18px;
+        margin: 0 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        color: var(--primary);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid white;
+      }
+
+      .btn-outline:hover {
+        background-color: white;
+        color: var(--dark);
+      }
+
+      /* Services */
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.8rem;
+        color: var(--secondary);
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary);
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+      }
+
+      .service-card {
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .service-img {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .service-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-card:hover .service-img img {
+        transform: scale(1.1);
+      }
+
+      .service-content {
+        padding: 25px;
+      }
+
+      .service-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: var(--secondary);
+        font-weight: 700;
+      }
+
+      .service-content p {
+        font-size: 18px;
+        color: var(--gray);
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      /* Gallery */
+      .gallery {
+        background-color: #f5f5f5;
+      }
+
+      .gallery-container {
+        position: relative;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 500px;
+        margin: 50px 0;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .swiper-slide {
+        position: relative;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
         font-size: 1.2rem;
       }
-      
-      .btn {
+
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: white;
+        opacity: 0.7;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: var(--primary) !important;
+        opacity: 1;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: var(--primary) !important;
+        background: rgba(255, 255, 255, 0.8);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: all 0.3s;
+      }
+
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+        background: white;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      /* Image Grid */
+      .image-grid {
+        margin-top: 70px;
+      }
+
+      .image-grid h3 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 1.8rem;
+        color: var(--secondary);
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 25px;
+      }
+
+      .grid-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        height: 300px;
+      }
+
+      .grid-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .grid-item:hover img {
+        transform: scale(1.1);
+      }
+
+      /* About */
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .about-img {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        height: 500px;
+      }
+
+      .about-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         display: block;
+      }
+
+      .about-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        color: var(--secondary);
+      }
+
+      .about-content p {
+        margin-bottom: 25px;
+        color: var(--gray);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .about-image-showcase {
+        display: flex;
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .about-image-showcase img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image-showcase img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Contact */
+      .contact {
+        background-color: var(--secondary);
+        color: white;
+      }
+
+      .contact .section-title h2 {
+        color: white;
+      }
+
+      .contact .section-title h2::after {
+        background-color: white;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 60px;
+      }
+
+      .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        color: white;
+      }
+
+      .contact-info p {
         margin-bottom: 20px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .contact-info i {
+        color: var(--primary);
+        font-size: 24px;
+        min-width: 30px;
+        text-align: center;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 18px;
+        margin-bottom: 25px;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 18px;
+        transition: all 0.3s;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 300;
+      }
+
+      .contact-form button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 18px 35px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        font-size: 18px;
         width: 100%;
       }
-      
-      .btn-outline {
-        margin-left: 0;
+
+      .contact-form button:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
-      
-      .section-title h2 {
-        font-size: 2.2rem;
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 50px 0 30px;
       }
-      
-      .grid-container {
-        grid-template-columns: 1fr;
-      }
-      
+
       .footer-content {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
       }
-      .swiper {
-  width: 100%;
-  height: 100%;
-}
 
-.swiper-slide {
-  position: relative;
-}
+      .footer-column h3 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        color: var(--primary);
+      }
 
-.image-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <nav class="navbar">
-        <a href="#" class="logo">
-          <i class="fas fa-tools"></i> MOCKO
-        </a>
-        
-        <div class="nav-links" id="navLinks">
-          <a href="#home">Domov</a>
-          <a href="#sluzby">Služby</a>
-          <a href="#galeria">Galéria</a>
-          <a href="#o-nas">O nás</a>
-          <a href="#kontakt">Kontakt</a>
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 15px;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 18px;
+        font-weight: 300;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 20px;
+        margin-top: 25px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        font-size: 20px;
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 16px;
+        font-weight: 300;
+        opacity: 0.8;
+      }
+
+      /* Emergency Banner */
+      .emergency-banner {
+        background: linear-gradient(
+          to right,
+          var(--slovak-red),
+          var(--primary)
+        );
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 999;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .emergency-banner p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .emergency-banner a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: inline-block;
+      }
+
+      .emergency-banner a:hover {
+        text-decoration: underline;
+        transform: scale(1.05);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Lightbox */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      .lightbox-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.5);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .lightbox-close:hover {
+        background: var(--primary);
+      }
+
+      /* Mobile Styles */
+      @media (max-width: 992px) {
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background-color: white;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 30px;
+          transition: left 0.3s;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .about {
+          grid-template-columns: 1fr;
+        }
+
+        .about-img {
+          order: -1;
+          height: 400px;
+        }
+
+        .swiper {
+          height: 400px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .btn {
+          display: block;
+          margin-bottom: 20px;
+          width: 100%;
+        }
+
+        .btn-outline {
+          margin-left: 0;
+        }
+
+        .section-title h2 {
+          font-size: 2.2rem;
+        }
+
+        .grid-container {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo"> <i class="fas fa-tools"></i> MOCKO </a>
+
+          <div class="nav-links" id="navLinks">
+            <a href="#home">Domov</a>
+            <a href="#sluzby">Služby</a>
+            <a href="#galeria">Galéria</a>
+            <a href="#o-nas">O nás</a>
+            <a href="#kontakt">Kontakt</a>
+          </div>
+
+          <button class="mobile-menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Profesionálny kanalizačný servis</h1>
+          <p>
+            Poskytujeme kompletný servis kanalizačných systémov s dôrazom na
+            kvalitu a rýchlosť. Naša havarijná služba je k dispozícii 24 hodín
+            denne.
+          </p>
+          <div>
+            <a href="#kontakt" class="btn">Kontaktujte nás</a>
+            <a href="tel:+421910667772" class="btn btn-outline"
+              >Zavolajte nám</a
+            >
+          </div>
         </div>
-        
-        <button class="mobile-menu-btn" id="menuBtn">
-          <i class="fas fa-bars"></i>
-        </button>
-      </nav>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="sluzby">
+      <div class="container">
+        <div class="section-title">
+          <h2>Naše služby</h2>
+          <p>
+            Ponúkame široký rozsah služieb v oblasti kanalizácie a odpadového
+            hospodárstva
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-img">
+              <img
+                src="images/resize-01.jpg"
+                alt="Vysokotlakové čistenie kanalizácie"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Vysokotlakové čistenie</h3>
+              <p>
+                Odstránenie nánosov a ucpávok v potrubí pomocou vysoko výkonných
+                čistiacich strojov. Naša technika dokáže efektívne vyčistiť
+                potrubia rôznych priemerov.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <img src="images/resize-02.jpg" alt="Krtkovanie kanalizácie" />
+            </div>
+            <div class="service-content">
+              <h3>Krtkovanie</h3>
+              <p>
+                Profesionálne prečistenie kanalizačného potrubia bez potreby
+                výkopových prác. Ideálne riešenie pre staršie alebo ťažko
+                dostupné potrubia.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <img src="images/resize-03.jpg" alt="TV monitoring kanalizácie" />
+            </div>
+            <div class="service-content">
+              <h3>TV monitoring</h3>
+              <p>
+                Diagnostika stavu potrubia pomocou kamery s možnosťou
+                zaznamenania a vyhodnotenia. Presná identifikácia problémov bez
+                nutnosti demolácie.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <img
+                src="images/resize-04.jpg"
+                alt="Výkopové práce na kanalizácii"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Výkopové práce</h3>
+              <p>
+                Kompletné opravy a výmeny poškodených častí kanalizačného
+                systému. Vykonávame aj bezvýkopové opravy potrubia pomocou
+                moderných technológií.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="galeria">
+      <div class="container">
+        <div class="section-title">
+          <h2>Naše práce</h2>
+          <p>Pozrite si fotografie z našich realizácií a referenčných prác</p>
+        </div>
+
+        <div class="gallery-container">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="images/resize-01.jpg"
+                  alt="Vysokotlakové čistenie kanalizácie"
+                />
+                <div class="image-caption">
+                  Vysokotlakové čistenie kanalizácie
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/resize-02.jpg"
+                  alt="Krtkovanie kanalizačného potrubia"
+                />
+                <div class="image-caption">
+                  Krtkovanie kanalizačného potrubia
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/resize-03.jpg"
+                  alt="Monitoring potrubia kamerou"
+                />
+                <div class="image-caption">Monitoring potrubia kamerou</div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/resize-04.jpg"
+                  alt="Výkopové práce na kanalizácii"
+                />
+                <div class="image-caption">Výkopové práce na kanalizácii</div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/resize-05.jpg"
+                  alt="Oprava kanalizačného systému"
+                />
+                <div class="image-caption">Oprava kanalizačného systému</div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/resize-06.jpg"
+                  alt="Servis kanalizačného potrubia"
+                />
+                <div class="image-caption">Servis kanalizačného potrubia</div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+
+        <!-- Initialize Swiper -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            new Swiper(".swiper", {
+              loop: true,
+              autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+              },
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
+              effect: "slide",
+              speed: 800,
+            });
+          });
+        </script>
+
+        <!-- Additional Image Grid -->
+        <div class="image-grid">
+          <h3>Ďalšie fotografie z našich realizácií</h3>
+          <div class="grid-container">
+            <div class="grid-item">
+              <img
+                src="images/resize-01.jpg"
+                alt="Práca 1"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/resize-02.jpg"
+                alt="Práca 2"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/resize-03.jpg"
+                alt="Práca 3"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/resize-04.jpg"
+                alt="Práca 4"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/resize-05.jpg"
+                alt="Práca 5"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/resize-06.jpg"
+                alt="Práca 6"
+                class="gallery-image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="o-nas">
+      <div class="container">
+        <div class="about">
+          <div class="about-content">
+            <h2>O našej spoločnosti</h2>
+            <p>
+              Spoločnosť <strong>MOCKO</strong> pôsobí na trhu viac ako 10 rokov
+              a špecializuje sa na kanalizačné služby. Našim cieľom je
+              poskytovať kvalitné a spoľahlivé služby s dôrazom na spokojnosť
+              zákazníka.
+            </p>
+
+            <div class="about-image-showcase">
+              <img src="images/resize-01.jpg" alt="Naša práca" />
+              <img src="images/resize-02.jpg" alt="Naša práca" />
+              <img src="images/resize-03.jpg" alt="Naša práca" />
+            </div>
+
+            <p>
+              Disponujeme <strong>modernou technikou</strong> a tímom skúsených
+              odborníkov, ktorí sú pripravení riešiť akýkoľvek problém s
+              kanalizáciou. Naša práca je založená na dlhoročných skúsenostiach
+              a profesionálnom prístupe.
+            </p>
+            <p>
+              Staviame na skúsenostiach a dlhoročnej praxi v obore. Naši
+              technici absolvujú pravidelné školenia, aby sme vám mohli ponúknuť
+              vždy najmodernejšie riešenia.
+            </p>
+          </div>
+          <div class="about-img">
+            <img src="images/resize-04.jpg" alt="O nás" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="kontakt">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kontakt</h2>
+          <p>Kontaktujte nás ešte dnes a dohodnite si termín návštevy</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Kontaktné údaje</h3>
+            <p>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+421910667772">+421 910 667 772</a>
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:jankomocko38@gmail.com">jankomocko38@gmail.com</a>
+            </p>
+            <p><i class="fas fa-map-marker-alt"></i> Senec, Slovensko</p>
+
+            <h3>Pracovná doba</h3>
+            <p><i class="fas fa-clock"></i> Pondelok - Piatok: 7:00 - 18:00</p>
+            <p><i class="fas fa-clock"></i> Sobota: 8:00 - 12:00</p>
+            <p><i class="fas fa-clock"></i> Nedeľa: Iba havarijné prípady</p>
+
+            <h3>Havarijná služba</h3>
+            <p><i class="fas fa-exclamation-triangle"></i> Nonstop dostupná</p>
+            <p>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+421910667772">+421 910 667 772</a>
+            </p>
+
+            <div class="social-links">
+              <a href="https://www.facebook.com/mocko9Z"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://wa.me/421910667772. "
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="viber://chat/?number=421910667772"
+                ><i class="fab fa-viber"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form id="contactForm">
+              <input type="text" placeholder="Vaše meno" required />
+              <input type="email" placeholder="Váš email" required />
+              <input type="tel" placeholder="Váš telefón" />
+              <textarea placeholder="Vaša správa" rows="5" required></textarea>
+              <button type="submit">Odoslať správu</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>MOCKO</h3>
+            <p>
+              Profesionálny kanalizačný servis poskytujúci kvalitné služby na
+              celom Slovensku.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Rýchle odkazy</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Domov</a></li>
+              <li><a href="#sluzby">Služby</a></li>
+              <li><a href="#galeria">Galéria</a></li>
+              <li><a href="#o-nas">O nás</a></li>
+              <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Kontakt</h3>
+            <ul class="footer-links">
+              <li><a href="tel:+421910667772">+421 910 667 772</a></li>
+              <li>
+                <a href="mailto:info@mocko-servis.sk">jankomocko38@gmail.com</a>
+              </li>
+              <li>Senec, Slovensko</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          &copy; 2023 MOCKO Kanalizačný Servis. Všetky práva vyhradené.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+      <div class="container">
+        <p>
+          HAVARIJNÁ SLUŽBA | <a href="tel:+421910667772">+421 910 667 772</a> |
+          Nonstop
+        </p>
+      </div>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Profesionálny kanalizačný servis</h1>
-        <p>Poskytujeme kompletný servis kanalizačných systémov s dôrazom na kvalitu a rýchlosť. Naša havarijná služba je k dispozícii 24 hodín denne.</p>
-        <div>
-          <a href="#kontakt" class="btn">Kontaktujte nás</a>
-          <a href="tel:+421910667772" class="btn btn-outline">Zavolajte nám</a>
-        </div>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="" />
+        <span class="lightbox-close">&times;</span>
       </div>
     </div>
-  </section>
 
-  <!-- Services Section -->
-  <section class="section" id="sluzby">
-    <div class="container">
-      <div class="section-title">
-        <h2>Naše služby</h2>
-        <p>Ponúkame široký rozsah služieb v oblasti kanalizácie a odpadového hospodárstva</p>
-      </div>
-      
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-img">
-            <img src="images/resize-01.jpg" alt="Vysokotlakové čistenie kanalizácie">
-          </div>
-          <div class="service-content">
-            <h3>Vysokotlakové čistenie</h3>
-            <p>Odstránenie nánosov a ucpávok v potrubí pomocou vysoko výkonných čistiacich strojov. Naša technika dokáže efektívne vyčistiť potrubia rôznych priemerov.</p>
-          </div>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-img">
-            <img src="images/resize-02.jpg" alt="Krtkovanie kanalizácie">
-          </div>
-          <div class="service-content">
-            <h3>Krtkovanie</h3>
-            <p>Profesionálne prečistenie kanalizačného potrubia bez potreby výkopových prác. Ideálne riešenie pre staršie alebo ťažko dostupné potrubia.</p>
-          </div>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-img">
-            <img src="images/resize-03.jpg" alt="TV monitoring kanalizácie">
-          </div>
-          <div class="service-content">
-            <h3>TV monitoring</h3>
-            <p>Diagnostika stavu potrubia pomocou kamery s možnosťou zaznamenania a vyhodnotenia. Presná identifikácia problémov bez nutnosti demolácie.</p>
-          </div>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-img">
-            <img src="images/resize-04.jpg" alt="Výkopové práce na kanalizácii">
-          </div>
-          <div class="service-content">
-            <h3>Výkopové práce</h3>
-            <p>Kompletné opravy a výmeny poškodených častí kanalizačného systému. Vykonávame aj bezvýkopové opravy potrubia pomocou moderných technológií.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper", {
+          // Optional parameters
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
 
-  <!-- Gallery Section -->
-  <section class="section gallery" id="galeria">
-    <div class="container">
-      <div class="section-title">
-        <h2>Naše práce</h2>
-        <p>Pozrite si fotografie z našich realizácií a referenčných prác</p>
-      </div>
-      
-      <div class="gallery-container">
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="images/resize-01.jpg" alt="Vysokotlakové čistenie kanalizácie">
-        <div class="image-caption">Vysokotlakové čistenie kanalizácie</div>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/resize-02.jpg" alt="Krtkovanie kanalizačného potrubia">
-        <div class="image-caption">Krtkovanie kanalizačného potrubia</div>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/resize-03.jpg" alt="Monitoring potrubia kamerou">
-        <div class="image-caption">Monitoring potrubia kamerou</div>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/resize-04.jpg" alt="Výkopové práce na kanalizácii">
-        <div class="image-caption">Výkopové práce na kanalizácii</div>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/resize-05.jpg" alt="Oprava kanalizačného systému">
-        <div class="image-caption">Oprava kanalizačného systému</div>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/resize-06.jpg" alt="Servis kanalizačného potrubia">
-        <div class="image-caption">Servis kanalizačného potrubia</div>
-      </div>
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-</div>
+          // If you need pagination
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
 
-<!-- Initialize Swiper -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    new Swiper('.swiper', {
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      effect: 'slide',
-      speed: 800
-    });
-  });
-</script>
+          // Navigation arrows
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
 
-      <!-- Additional Image Grid -->
-      <div class="image-grid">
-        <h3>Ďalšie fotografie z našich realizácií</h3>
-        <div class="grid-container">
-          <div class="grid-item">
-            <img src="images/resize-01.jpg" alt="Práca 1" class="gallery-image">
-          </div>
-          <div class="grid-item">
-            <img src="images/resize-02.jpg" alt="Práca 2" class="gallery-image">
-          </div>
-          <div class="grid-item">
-            <img src="images/resize-03.jpg" alt="Práca 3" class="gallery-image">
-          </div>
-          <div class="grid-item">
-            <img src="images/resize-04.jpg" alt="Práca 4" class="gallery-image">
-          </div>
-          <div class="grid-item">
-            <img src="images/resize-05.jpg" alt="Práca 5" class="gallery-image">
-          </div>
-          <div class="grid-item">
-            <img src="images/resize-06.jpg" alt="Práca 6" class="gallery-image">
-          </div>
-        </div>
+          // And if we need scrollbar
+          scrollbar: {
+            el: ".swiper-scrollbar",
+          },
+
+          // Default parameters
+          slidesPerView: 1,
+          spaceBetween: 10,
+          effect: "slide", // Make sure this is set to 'slide'
+        });
+      });
+    </script>
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        menuBtn.innerHTML = navLinks.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Initialize Swiper
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        effect: "slide",
+        speed: 800,
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            if (navLinks.classList.contains("active")) {
+              navLinks.classList.remove("active");
+              menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+          }
+        });
+      });
+
+      // Lightbox functionality
+      const lightbox = document.createElement("div");
+      lightbox.className = "lightbox";
+      lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <img src="" alt="">
+        <span class="lightbox-close">&times;</span>
       </div>
-    </div>
-  </section>
+    `;
+      document.body.appendChild(lightbox);
 
-  <!-- About Section -->
-  <section class="section" id="o-nas">
-    <div class="container">
-      <div class="about">
-        <div class="about-content">
-          <h2>O našej spoločnosti</h2>
-          <p>Spoločnosť <strong>MOCKO</strong> pôsobí na trhu viac ako 10 rokov a špecializuje sa na kanalizačné služby. Našim cieľom je poskytovať kvalitné a spoľahlivé služby s dôrazom na spokojnosť zákazníka.</p>
-          
-          <div class="about-image-showcase">
-            <img src="images/resize-01.jpg" alt="Naša práca">
-            <img src="images/resize-02.jpg" alt="Naša práca">
-            <img src="images/resize-03.jpg" alt="Naša práca">
-          </div>
-          
-          <p>Disponujeme <strong>modernou technikou</strong> a tímom skúsených odborníkov, ktorí sú pripravení riešiť akýkoľvek problém s kanalizáciou. Naša práca je založená na dlhoročných skúsenostiach a profesionálnom prístupe.</p>
-          <p>Staviame na skúsenostiach a dlhoročnej praxi v obore. Naši technici absolvujú pravidelné školenia, aby sme vám mohli ponúknuť vždy najmodernejšie riešenia.</p>
-        </div>
-        <div class="about-img">
-          <img src="images/resize-04.jpg" alt="O nás">
-        </div>
-      </div>
-    </div>
-  </section>
+      document
+        .querySelectorAll(".gallery-image, .about-image-showcase img")
+        .forEach((img) => {
+          img.addEventListener("click", () => {
+            const imgSrc = img.getAttribute("src");
+            const imgAlt = img.getAttribute("alt");
+            lightbox.querySelector("img").setAttribute("src", imgSrc);
+            lightbox.querySelector("img").setAttribute("alt", imgAlt);
+            lightbox.classList.add("active");
+          });
+        });
 
-  <!-- Contact Section -->
-  <section class="section contact" id="kontakt">
-    <div class="container">
-      <div class="section-title">
-        <h2>Kontakt</h2>
-        <p>Kontaktujte nás ešte dnes a dohodnite si termín návštevy</p>
-      </div>
-      
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Kontaktné údaje</h3>
-          <p><i class="fas fa-phone"></i> <a href="tel:+421910667772">+421 910 667 772</a></p>
-          <p><i class="fas fa-envelope"></i> <a href="mailto:jankomocko38@gmail.com">jankomocko38@gmail.com</a></p>
-          <p><i class="fas fa-map-marker-alt"></i> Senec, Slovensko</p>
-          
-          <h3>Pracovná doba</h3>
-          <p><i class="fas fa-clock"></i> Pondelok - Piatok: 7:00 - 18:00</p>
-          <p><i class="fas fa-clock"></i> Sobota: 8:00 - 12:00</p>
-          <p><i class="fas fa-clock"></i> Nedeľa: Iba havarijné prípady</p>
-          
-          <h3>Havarijná služba</h3>
-          <p><i class="fas fa-exclamation-triangle"></i> Nonstop dostupná</p>
-          <p><i class="fas fa-phone"></i> <a href="tel:+421910667772">+421 910 667 772</a></p>
-          
-          <div class="social-links">
-            <a href="https://www.facebook.com/mocko9Z"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/421910667772. "><i class="fab fa-whatsapp"></i></a>
-            <a href="viber://chat/?number=421910667772"><i class="fab fa-viber"></i></a>
-          </div>
-        </div>
-        
-        <div class="contact-form">
-          <form id="contactForm">
-            <input type="text" placeholder="Vaše meno" required>
-            <input type="email" placeholder="Váš email" required>
-            <input type="tel" placeholder="Váš telefón">
-            <textarea placeholder="Vaša správa" rows="5" required></textarea>
-            <button type="submit">Odoslať správu</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+      lightbox
+        .querySelector(".lightbox-close")
+        .addEventListener("click", () => {
+          lightbox.classList.remove("active");
+        });
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>MOCKO</h3>
-          <p>Profesionálny kanalizačný servis poskytujúci kvalitné služby na celom Slovensku.</p>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Rýchle odkazy</h3>
-          <ul class="footer-links">
-            <li><a href="#home">Domov</a></li>
-            <li><a href="#sluzby">Služby</a></li>
-            <li><a href="#galeria">Galéria</a></li>
-            <li><a href="#o-nas">O nás</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Kontakt</h3>
-          <ul class="footer-links">
-            <li><a href="tel:+421910667772">+421 910 667 772</a></li>
-            <li><a href="mailto:info@mocko-servis.sk">jankomocko38@gmail.com</a></li>
-            <li>Senec, Slovensko</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="copyright">
-        &copy; 2023 MOCKO Kanalizačný Servis. Všetky práva vyhradené.
-      </div>
-    </div>
-  </footer>
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.remove("active");
+        }
+      });
 
-  <!-- Emergency Banner -->
-  <div class="emergency-banner">
-    <div class="container">
-      <p>HAVARIJNÁ SLUŽBA | <a href="tel:+421910667772">+421 910 667 772</a> | Nonstop</p>
-    </div>
-  </div>
+      // Form submission handling
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Ďakujeme za vašu správu! Čoskoro vás budeme kontaktovať.");
+          this.reset();
+        });
+      }
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="">
-      <span class="lightbox-close">&times;</span>
-    </div>
-  </div>
+      // Scroll animation for elements
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll(
+          ".service-card, .about-content, .contact-form"
+        );
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      
-      // If you need pagination
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-      
-      // Default parameters
-      slidesPerView: 1,
-      spaceBetween: 10,
-      effect: 'slide', // Make sure this is set to 'slide'
-    });
-  });
-  </script>
-  <script>
-    // Mobile
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+
+          if (elementPosition < screenPosition) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      };
+
+      // Set initial state for animation
+      document
+        .querySelectorAll(".service-card, .about-content, .contact-form")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        });
+
+      // Run animations on load and scroll
+      window.addEventListener("load", animateOnScroll);
+      window.addEventListener("scroll", animateOnScroll);
+    </script>
+  </body>
+</html>
