@@ -871,38 +871,61 @@
       </div>
       
       <div class="gallery-container">
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="images/resize-01.jpg" alt="Vysokotlakové čistenie kanalizácie">
-              <div class="image-caption">Vysokotlakové čistenie kanalizácie</div>
-            </div>
-            <div class="swiper-slide">
-              <img src="images/resize-02.jpg" alt="Krtkovanie kanalizačného potrubia">
-              <div class="image-caption">Krtkovanie kanalizačného potrubia</div>
-            </div>
-            <div class="swiper-slide">
-              <img src="images/resize-03.jpg" alt="Monitoring potrubia kamerou">
-              <div class="image-caption">Monitoring potrubia kamerou</div>
-            </div>
-            <div class="swiper-slide">
-              <img src="images/resize-04.jpg" alt="Výkopové práce na kanalizácii">
-              <div class="image-caption">Výkopové práce na kanalizácii</div>
-            </div>
-            <div class="swiper-slide">
-              <img src="images/resize-05.jpg" alt="Oprava kanalizačného systému">
-              <div class="image-caption">Oprava kanalizačného systému</div>
-            </div>
-            <div class="swiper-slide">
-              <img src="images/resize-06.jpg" alt="Servis kanalizačného potrubia">
-              <div class="image-caption">Servis kanalizačného potrubia</div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-        </div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="images/resize-01.jpg" alt="Vysokotlakové čistenie kanalizácie">
+        <div class="image-caption">Vysokotlakové čistenie kanalizácie</div>
       </div>
+      <div class="swiper-slide">
+        <img src="images/resize-02.jpg" alt="Krtkovanie kanalizačného potrubia">
+        <div class="image-caption">Krtkovanie kanalizačného potrubia</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="images/resize-03.jpg" alt="Monitoring potrubia kamerou">
+        <div class="image-caption">Monitoring potrubia kamerou</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="images/resize-04.jpg" alt="Výkopové práce na kanalizácii">
+        <div class="image-caption">Výkopové práce na kanalizácii</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="images/resize-05.jpg" alt="Oprava kanalizačného systému">
+        <div class="image-caption">Oprava kanalizačného systému</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="images/resize-06.jpg" alt="Servis kanalizačného potrubia">
+        <div class="image-caption">Servis kanalizačného potrubia</div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<!-- Initialize Swiper -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      effect: 'slide',
+      speed: 800
+    });
+  });
+</script>
 
       <!-- Additional Image Grid -->
       <div class="image-grid">
