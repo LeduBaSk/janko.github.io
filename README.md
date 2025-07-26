@@ -1,1 +1,1 @@
-index.html
+http://janko.github.io/index.html
